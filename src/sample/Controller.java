@@ -37,7 +37,6 @@ public class Controller extends Main implements Initializable {
   public TextArea textArea;
 
 
-
   //Populate Author
   @FXML
   private void populateCharacterEntity(CharacterEntity characterEntity)
@@ -106,7 +105,7 @@ public class Controller extends Main implements Initializable {
       //Get all Character Entity information
       ObservableList<CharacterEntity> characterData = CharacterEntityDAO.searchCharacterEntities();
       //Populate Character Entities on TableView
-     // populateCharacterEntities(characterData);
+      // populateCharacterEntities(characterData);
     } catch (SQLException e) {
       System.out.println("Error occurred while getting authors information from DB.\n" + e);
       throw e;
@@ -135,17 +134,7 @@ public class Controller extends Main implements Initializable {
 
   @FXML
   public void initialize(URL location, ResourceBundle resources) {
-/*
-   // TableColumn<CharacterEntity, Integer> playerID = new TableColumn<>("playerID");
-    playerID.setMinWidth(80);
-    playerID.setCellValueFactory(new PropertyValueFactory<>("playerID"));
-    //TableColumn<CharacterEntity, String> charName = new TableColumn<>("charName");
-    charName.setMinWidth(80);
-    charName.setCellValueFactory(new PropertyValueFactory<>("charName"));
-  //  TableColumn<CharacterEntity, Integer> charClass = new TableColumn<>("charClass");
-    charClass.setMinWidth(80);
-    charClass.setCellValueFactory(new PropertyValueFactory<>("charClass"));
-    */
+
     playerID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
     charName.setCellValueFactory(cellData -> cellData.getValue().characterNameProperty());
     charClass.setCellValueFactory(cellData -> cellData.getValue().classProperty());
@@ -163,7 +152,7 @@ public class Controller extends Main implements Initializable {
       searchCharacterEntities(new ActionEvent());
     } catch (SQLException e) {
       textArea.setText(
-          "Enter the id of the author to delete. \nProblem occurred while deleting author " + e);
+          "Enter the id of the player to delete. \nProblem occurred while deleting player " + e);
       throw e;
     }
   }
