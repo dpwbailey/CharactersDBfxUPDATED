@@ -28,7 +28,7 @@ public class Controller extends Main implements Initializable {
   @FXML
   public TableView<CharacterEntity> CharacterEntityTableView;
   @FXML
-  public TableColumn<CharacterEntity, Integer> playerID;
+  private TableColumn<CharacterEntity, Integer> playerID;
   @FXML
   private TableColumn<CharacterEntity, String> charName;
   @FXML
@@ -135,18 +135,22 @@ public class Controller extends Main implements Initializable {
 
   @FXML
   public void initialize(URL location, ResourceBundle resources) {
-
-    TableColumn<CharacterEntity, Integer> playerID = new TableColumn<>("ID");
+/*
+   // TableColumn<CharacterEntity, Integer> playerID = new TableColumn<>("playerID");
     playerID.setMinWidth(80);
-    playerID.setCellValueFactory(new PropertyValueFactory<>("ID"));
-    TableColumn<CharacterEntity, String> charName = new TableColumn<>("Character Name");
+    playerID.setCellValueFactory(new PropertyValueFactory<>("playerID"));
+    //TableColumn<CharacterEntity, String> charName = new TableColumn<>("charName");
     charName.setMinWidth(80);
-    charName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-    TableColumn<CharacterEntity, Integer> charClass = new TableColumn<>("Class");
+    charName.setCellValueFactory(new PropertyValueFactory<>("charName"));
+  //  TableColumn<CharacterEntity, Integer> charClass = new TableColumn<>("charClass");
     charClass.setMinWidth(80);
-    charClass.setCellValueFactory(new PropertyValueFactory<>("Class"));
+    charClass.setCellValueFactory(new PropertyValueFactory<>("charClass"));
+    */
+    playerID.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+    charName.setCellValueFactory(cellData -> cellData.getValue().characterNameProperty());
+    charClass.setCellValueFactory(cellData -> cellData.getValue().classProperty());
 
-//    CHARTABLE.getColumns().addAll(playerID,charName,charClass);
+    //CharacterEntityTableView.getColumns().addAll(playerID,charName,charClass);
   }
 
   //Delete all CharacterEntities with a given playerId from DB
