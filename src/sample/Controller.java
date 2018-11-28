@@ -1,6 +1,7 @@
 package sample;
 
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.control.TextArea;
 
 import model.CharacterEntity;
 import model.CharacterEntityDAO;
+import util.DBUtil;
 
 public class Controller extends Main implements Initializable {
 
@@ -33,8 +35,7 @@ public class Controller extends Main implements Initializable {
   private TableColumn<CharacterEntity, String> charClass;
   @FXML
   public TextArea textArea;
-  @FXML
-  public Button PopulateButton;
+
 
 
   //Populate Author
@@ -52,9 +53,17 @@ public class Controller extends Main implements Initializable {
   //Populate Authors for TableView
   @FXML
   private void populateCharacterEntities(ActionEvent actionEvent)
-      throws ClassNotFoundException {
+      throws ClassNotFoundException, SQLException {
     //Set items to the employeeTable
-    CharacterEntityTableView.setItems(CharacterEntityDAO.searchCharacterEntities());
+    try {
+      ResultSet rsCharacterEntity = DBUtil
+          .dbExecuteQuery("SELECT * FROM CHARACTERS ORDER BY playerID");
+      ObservableList<CharacterEntity> characterList = CharacterEntityDAO
+          .getCharacterEntityList(rsCharacterEntity);
+      CharacterEntityTableView.setItems(characterList);
+    } finally {
+
+    }
   }
 
 

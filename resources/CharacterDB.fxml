@@ -56,11 +56,12 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <TableView layoutX="162.0" prefHeight="375.0" prefWidth="479.0">
+        <TableView fx:id="CharacterEntityTableView" layoutX="162.0" prefHeight="375.0"
+          prefWidth="479.0">
               <columns>
                 <TableColumn id="playerIDCol" prefWidth="119.0" text="playerID" />
-                <TableColumn id="CharacterCol" prefWidth="94.0" text="Character" />
-                  <TableColumn id="ClassCol" prefWidth="99.0" text="Class" />
+                <TableColumn id="CharacterCol" fx:id="charName" prefWidth="94.0" text="Character"/>
+                <TableColumn id="ClassCol" fx:id="charClass" prefWidth="99.0" text="Class"/>
               </columns>
             </TableView>
             <Button layoutX="76.0" layoutY="2.0" mnemonicParsing="false" onAction="#populateCharacterEntities" prefHeight="25.0" prefWidth="67.0" text="Populate" />

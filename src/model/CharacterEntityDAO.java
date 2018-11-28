@@ -68,7 +68,7 @@ public class CharacterEntityDAO {
     }
   }
   //Select * from authors operation
-  private static ObservableList<CharacterEntity> getCharacterEntityList(ResultSet rs)
+  public static ObservableList<CharacterEntity> getCharacterEntityList(ResultSet rs)
       throws SQLException, ClassNotFoundException {
     //Declare a observable List which comprises of Employee objects
     ObservableList<CharacterEntity> characterList = FXCollections.observableArrayList();
